@@ -20,6 +20,12 @@
     </property>
     <item row="0" column="0">
      <widget class="QTableWidget" name="mainTable">
+      <property name="sortingEnabled">
+       <bool>true</bool>
+      </property>
+      <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+       <bool>false</bool>
+      </attribute>
       <column>
        <property name="text">
         <string>First Name</string>
@@ -49,7 +55,15 @@
     </property>
     <addaction name="actionQuit"/>
    </widget>
+   <widget class="QMenu" name="menuMembers">
+    <property name="title">
+     <string>Members</string>
+    </property>
+    <addaction name="actionNewMember"/>
+    <addaction name="actionRemoveMember"/>
+   </widget>
    <addaction name="menuFile"/>
+   <addaction name="menuMembers"/>
   </widget>
   <widget class="QToolBar" name="toolBar">
    <property name="windowTitle">
@@ -63,10 +77,15 @@
    </attribute>
    <addaction name="actionNewMember"/>
    <addaction name="actionRemoveMember"/>
+   <addaction name="actionNewColumn"/>
+   <addaction name="actionRemoveColumn"/>
   </widget>
   <action name="actionNewMember">
    <property name="text">
     <string>New Member</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
    </property>
   </action>
   <action name="actionQuit">
@@ -80,6 +99,19 @@
   <action name="actionRemoveMember">
    <property name="text">
     <string>RemoveMember</string>
+   </property>
+   <property name="shortcut">
+    <string>Del</string>
+   </property>
+  </action>
+  <action name="actionNewColumn">
+   <property name="text">
+    <string>NewColumn</string>
+   </property>
+  </action>
+  <action name="actionRemoveColumn">
+   <property name="text">
+    <string>RemoveColumn</string>
    </property>
   </action>
  </widget>
