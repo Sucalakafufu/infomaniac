@@ -13,13 +13,13 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        infomaniac.cpp
+        infomaniac.cpp \
+    infotype.cpp
 
-HEADERS  += infomaniac.h
+HEADERS  += infomaniac.h \
+    infotype.h
 
 FORMS    += infomaniac.ui
-
-Debug:DESTDIR = $$TARGET-$$VERSION-Debug
 
 Release:DESTDIR = $$TARGET-$$VERSION$$NONSTATIC
 
