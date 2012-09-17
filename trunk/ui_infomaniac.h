@@ -1,8 +1,8 @@
 /********************************************************************************
 ** Form generated from reading UI file 'infomaniac.ui'
 **
-** Created: Thu Sep 13 11:26:05 2012
-**      by: Qt User Interface Compiler version 4.8.2
+** Created: Sun Sep 16 17:13:09 2012
+**      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -16,9 +16,8 @@
 #include <QtGui/QButtonGroup>
 #include <QtGui/QHeaderView>
 #include <QtGui/QMainWindow>
+#include <QtGui/QMenu>
 #include <QtGui/QMenuBar>
-#include <QtGui/QStatusBar>
-#include <QtGui/QToolBar>
 #include <QtGui/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -26,28 +25,26 @@ QT_BEGIN_NAMESPACE
 class Ui_InfoManiac
 {
 public:
-    QMenuBar *menuBar;
-    QToolBar *mainToolBar;
     QWidget *centralWidget;
-    QStatusBar *statusBar;
+    QMenuBar *menuBar;
+    QMenu *menuFile;
 
     void setupUi(QMainWindow *InfoManiac)
     {
         if (InfoManiac->objectName().isEmpty())
             InfoManiac->setObjectName(QString::fromUtf8("InfoManiac"));
-        InfoManiac->resize(400, 300);
-        menuBar = new QMenuBar(InfoManiac);
-        menuBar->setObjectName(QString::fromUtf8("menuBar"));
-        InfoManiac->setMenuBar(menuBar);
-        mainToolBar = new QToolBar(InfoManiac);
-        mainToolBar->setObjectName(QString::fromUtf8("mainToolBar"));
-        InfoManiac->addToolBar(mainToolBar);
+        InfoManiac->resize(761, 509);
         centralWidget = new QWidget(InfoManiac);
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
         InfoManiac->setCentralWidget(centralWidget);
-        statusBar = new QStatusBar(InfoManiac);
-        statusBar->setObjectName(QString::fromUtf8("statusBar"));
-        InfoManiac->setStatusBar(statusBar);
+        menuBar = new QMenuBar(InfoManiac);
+        menuBar->setObjectName(QString::fromUtf8("menuBar"));
+        menuBar->setGeometry(QRect(0, 0, 761, 21));
+        menuFile = new QMenu(menuBar);
+        menuFile->setObjectName(QString::fromUtf8("menuFile"));
+        InfoManiac->setMenuBar(menuBar);
+
+        menuBar->addAction(menuFile->menuAction());
 
         retranslateUi(InfoManiac);
 
@@ -57,6 +54,7 @@ public:
     void retranslateUi(QMainWindow *InfoManiac)
     {
         InfoManiac->setWindowTitle(QApplication::translate("InfoManiac", "InfoManiac", 0, QApplication::UnicodeUTF8));
+        menuFile->setTitle(QApplication::translate("InfoManiac", "File", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };
