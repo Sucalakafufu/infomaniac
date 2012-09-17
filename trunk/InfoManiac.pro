@@ -14,14 +14,17 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         infomaniac.cpp \
-    infotype.cpp \
-    member.cpp
+    newcolumndialog.cpp \
+    errordialog.cpp
 
-HEADERS  += infomaniac.h \
+HEADERS  += \
     infotype.h \
-    member.h
+    newcolumndialog.h \
+    errordialog.h
 
-FORMS    += infomaniac.ui
+FORMS    += infomaniac.ui \
+    newcolumndialog.ui \
+    errordialog.ui
 
 Release:DESTDIR = $$TARGET-$$VERSION$$NONSTATIC
 

@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'infomaniac.ui'
 **
-** Created: Sun Sep 16 19:45:24 2012
+** Created: Mon Sep 17 10:06:24 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -31,11 +31,14 @@ public:
     QAction *actionNewMember;
     QAction *actionQuit;
     QAction *actionRemoveMember;
+    QAction *actionNewColumn;
+    QAction *actionRemoveColumn;
     QWidget *centralWidget;
     QGridLayout *gridLayout;
     QTableWidget *mainTable;
     QMenuBar *menuBar;
     QMenu *menuFile;
+    QMenu *menuMembers;
     QToolBar *toolBar;
 
     void setupUi(QMainWindow *InfoManiac)
@@ -49,6 +52,10 @@ public:
         actionQuit->setObjectName(QString::fromUtf8("actionQuit"));
         actionRemoveMember = new QAction(InfoManiac);
         actionRemoveMember->setObjectName(QString::fromUtf8("actionRemoveMember"));
+        actionNewColumn = new QAction(InfoManiac);
+        actionNewColumn->setObjectName(QString::fromUtf8("actionNewColumn"));
+        actionRemoveColumn = new QAction(InfoManiac);
+        actionRemoveColumn->setObjectName(QString::fromUtf8("actionRemoveColumn"));
         centralWidget = new QWidget(InfoManiac);
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
         gridLayout = new QGridLayout(centralWidget);
@@ -63,6 +70,8 @@ public:
         QTableWidgetItem *__qtablewidgetitem1 = new QTableWidgetItem();
         mainTable->setHorizontalHeaderItem(1, __qtablewidgetitem1);
         mainTable->setObjectName(QString::fromUtf8("mainTable"));
+        mainTable->setSortingEnabled(true);
+        mainTable->horizontalHeader()->setProperty("showSortIndicator", QVariant(false));
 
         gridLayout->addWidget(mainTable, 0, 0, 1, 1);
 
@@ -72,15 +81,22 @@ public:
         menuBar->setGeometry(QRect(0, 0, 761, 21));
         menuFile = new QMenu(menuBar);
         menuFile->setObjectName(QString::fromUtf8("menuFile"));
+        menuMembers = new QMenu(menuBar);
+        menuMembers->setObjectName(QString::fromUtf8("menuMembers"));
         InfoManiac->setMenuBar(menuBar);
         toolBar = new QToolBar(InfoManiac);
         toolBar->setObjectName(QString::fromUtf8("toolBar"));
         InfoManiac->addToolBar(Qt::TopToolBarArea, toolBar);
 
         menuBar->addAction(menuFile->menuAction());
+        menuBar->addAction(menuMembers->menuAction());
         menuFile->addAction(actionQuit);
+        menuMembers->addAction(actionNewMember);
+        menuMembers->addAction(actionRemoveMember);
         toolBar->addAction(actionNewMember);
         toolBar->addAction(actionRemoveMember);
+        toolBar->addAction(actionNewColumn);
+        toolBar->addAction(actionRemoveColumn);
 
         retranslateUi(InfoManiac);
         QObject::connect(actionQuit, SIGNAL(triggered()), InfoManiac, SLOT(close()));
@@ -92,14 +108,19 @@ public:
     {
         InfoManiac->setWindowTitle(QApplication::translate("InfoManiac", "InfoManiac", 0, QApplication::UnicodeUTF8));
         actionNewMember->setText(QApplication::translate("InfoManiac", "New Member", 0, QApplication::UnicodeUTF8));
+        actionNewMember->setShortcut(QApplication::translate("InfoManiac", "Ctrl+N", 0, QApplication::UnicodeUTF8));
         actionQuit->setText(QApplication::translate("InfoManiac", "Quit", 0, QApplication::UnicodeUTF8));
         actionQuit->setShortcut(QApplication::translate("InfoManiac", "Ctrl+Q", 0, QApplication::UnicodeUTF8));
         actionRemoveMember->setText(QApplication::translate("InfoManiac", "RemoveMember", 0, QApplication::UnicodeUTF8));
+        actionRemoveMember->setShortcut(QApplication::translate("InfoManiac", "Del", 0, QApplication::UnicodeUTF8));
+        actionNewColumn->setText(QApplication::translate("InfoManiac", "NewColumn", 0, QApplication::UnicodeUTF8));
+        actionRemoveColumn->setText(QApplication::translate("InfoManiac", "RemoveColumn", 0, QApplication::UnicodeUTF8));
         QTableWidgetItem *___qtablewidgetitem = mainTable->horizontalHeaderItem(0);
         ___qtablewidgetitem->setText(QApplication::translate("InfoManiac", "First Name", 0, QApplication::UnicodeUTF8));
         QTableWidgetItem *___qtablewidgetitem1 = mainTable->horizontalHeaderItem(1);
         ___qtablewidgetitem1->setText(QApplication::translate("InfoManiac", "Last Name", 0, QApplication::UnicodeUTF8));
         menuFile->setTitle(QApplication::translate("InfoManiac", "File", 0, QApplication::UnicodeUTF8));
+        menuMembers->setTitle(QApplication::translate("InfoManiac", "Members", 0, QApplication::UnicodeUTF8));
         toolBar->setWindowTitle(QApplication::translate("InfoManiac", "toolBar", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
