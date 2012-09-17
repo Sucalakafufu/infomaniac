@@ -14,10 +14,12 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         infomaniac.cpp \
-    infotype.cpp
+    infotype.cpp \
+    member.cpp
 
 HEADERS  += infomaniac.h \
-    infotype.h
+    infotype.h \
+    member.h
 
 FORMS    += infomaniac.ui
 
