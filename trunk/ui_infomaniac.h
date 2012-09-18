@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'infomaniac.ui'
 **
-** Created: Mon Sep 17 10:06:24 2012
+** Created: Mon Sep 17 17:02:52 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -33,6 +33,10 @@ public:
     QAction *actionRemoveMember;
     QAction *actionNewColumn;
     QAction *actionRemoveColumn;
+    QAction *actionSave;
+    QAction *actionSave_As;
+    QAction *actionOpen;
+    QAction *actionNew;
     QWidget *centralWidget;
     QGridLayout *gridLayout;
     QTableWidget *mainTable;
@@ -56,6 +60,14 @@ public:
         actionNewColumn->setObjectName(QString::fromUtf8("actionNewColumn"));
         actionRemoveColumn = new QAction(InfoManiac);
         actionRemoveColumn->setObjectName(QString::fromUtf8("actionRemoveColumn"));
+        actionSave = new QAction(InfoManiac);
+        actionSave->setObjectName(QString::fromUtf8("actionSave"));
+        actionSave_As = new QAction(InfoManiac);
+        actionSave_As->setObjectName(QString::fromUtf8("actionSave_As"));
+        actionOpen = new QAction(InfoManiac);
+        actionOpen->setObjectName(QString::fromUtf8("actionOpen"));
+        actionNew = new QAction(InfoManiac);
+        actionNew->setObjectName(QString::fromUtf8("actionNew"));
         centralWidget = new QWidget(InfoManiac);
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
         gridLayout = new QGridLayout(centralWidget);
@@ -90,9 +102,15 @@ public:
 
         menuBar->addAction(menuFile->menuAction());
         menuBar->addAction(menuMembers->menuAction());
+        menuFile->addAction(actionNew);
+        menuFile->addAction(actionOpen);
+        menuFile->addAction(actionSave);
+        menuFile->addAction(actionSave_As);
         menuFile->addAction(actionQuit);
         menuMembers->addAction(actionNewMember);
         menuMembers->addAction(actionRemoveMember);
+        menuMembers->addAction(actionNewColumn);
+        menuMembers->addAction(actionRemoveColumn);
         toolBar->addAction(actionNewMember);
         toolBar->addAction(actionRemoveMember);
         toolBar->addAction(actionNewColumn);
@@ -115,6 +133,14 @@ public:
         actionRemoveMember->setShortcut(QApplication::translate("InfoManiac", "Del", 0, QApplication::UnicodeUTF8));
         actionNewColumn->setText(QApplication::translate("InfoManiac", "NewColumn", 0, QApplication::UnicodeUTF8));
         actionRemoveColumn->setText(QApplication::translate("InfoManiac", "RemoveColumn", 0, QApplication::UnicodeUTF8));
+        actionSave->setText(QApplication::translate("InfoManiac", "Save Database", 0, QApplication::UnicodeUTF8));
+        actionSave->setShortcut(QApplication::translate("InfoManiac", "Ctrl+S", 0, QApplication::UnicodeUTF8));
+        actionSave_As->setText(QApplication::translate("InfoManiac", "Save Database As", 0, QApplication::UnicodeUTF8));
+        actionSave_As->setShortcut(QApplication::translate("InfoManiac", "Ctrl+Shift+S", 0, QApplication::UnicodeUTF8));
+        actionOpen->setText(QApplication::translate("InfoManiac", "Open Database", 0, QApplication::UnicodeUTF8));
+        actionOpen->setShortcut(QApplication::translate("InfoManiac", "Ctrl+O", 0, QApplication::UnicodeUTF8));
+        actionNew->setText(QApplication::translate("InfoManiac", "New Database", 0, QApplication::UnicodeUTF8));
+        actionNew->setShortcut(QApplication::translate("InfoManiac", "Ctrl+Shift+N", 0, QApplication::UnicodeUTF8));
         QTableWidgetItem *___qtablewidgetitem = mainTable->horizontalHeaderItem(0);
         ___qtablewidgetitem->setText(QApplication::translate("InfoManiac", "First Name", 0, QApplication::UnicodeUTF8));
         QTableWidgetItem *___qtablewidgetitem1 = mainTable->horizontalHeaderItem(1);

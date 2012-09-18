@@ -63,3 +63,14 @@ void InfoManiac::on_actionRemoveColumn_triggered()
             ui->mainTable->removeColumn(ui->mainTable->currentColumn());
     }
 }
+
+void InfoManiac::on_actionSave_triggered()
+{
+    db.populateDB(ui->mainTable);
+    db.saveDB(this);
+}
+
+void InfoManiac::on_actionOpen_triggered()
+{
+    db.openDB(this, ui->mainTable);
+}
