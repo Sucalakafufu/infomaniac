@@ -1,6 +1,9 @@
 #ifndef INFOMANIAC_H
 #define INFOMANIAC_H
 
+#include "errordialog.h"
+#include "newcolumndialog.h"
+#include "dbinterface.h"
 #include <QMainWindow>
 #include <QString>
 
@@ -21,8 +24,18 @@ private slots:
 
     void on_actionRemoveMember_triggered();
 
+    void on_actionNewColumn_triggered();
+
+    void on_actionRemoveColumn_triggered();
+
+    void on_actionSave_triggered();
+
+    void on_actionOpen_triggered();
+
 private:
     Ui::InfoManiac *ui;
+
+    dbInterface db;
 };
 
 #endif // INFOMANIAC_H

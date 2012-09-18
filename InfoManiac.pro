@@ -15,12 +15,16 @@ TEMPLATE = app
 SOURCES += main.cpp\
         infomaniac.cpp \
     newcolumndialog.cpp \
-    errordialog.cpp
+    errordialog.cpp \
+    cfginterface.cpp \
+    dbinterface.cpp
 
 HEADERS  += \
-    infotype.h \
     newcolumndialog.h \
-    errordialog.h
+    errordialog.h \
+    infomaniac.h \
+    cfginterface.h \
+    dbinterface.h
 
 FORMS    += infomaniac.ui \
     newcolumndialog.ui \

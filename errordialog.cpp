@@ -5,6 +5,7 @@ ErrorDialog::ErrorDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::ErrorDialog)
 {
+    setWindowFlags(Qt::Window | Qt::WindowCloseButtonHint);
     ui->setupUi(this);
 }
 

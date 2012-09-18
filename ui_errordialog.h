@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'errordialog.ui'
 **
-** Created: Mon Sep 17 10:17:23 2012
+** Created: Mon Sep 17 17:02:52 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -38,6 +38,7 @@ public:
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         ErrorMessage = new QLabel(ErrorDialog);
         ErrorMessage->setObjectName(QString::fromUtf8("ErrorMessage"));
+        ErrorMessage->setAlignment(Qt::AlignCenter);
 
         verticalLayout->addWidget(ErrorMessage);
 
