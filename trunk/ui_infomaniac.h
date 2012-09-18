@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'infomaniac.ui'
 **
-** Created: Mon Sep 17 17:02:52 2012
+** Created: Mon Sep 17 20:47:10 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -36,13 +36,16 @@ public:
     QAction *actionSave;
     QAction *actionSave_As;
     QAction *actionOpen;
-    QAction *actionNew;
+    QAction *actionNewDatabase;
+    QAction *actionSettings;
+    QAction *actionSaveToolBarState;
     QWidget *centralWidget;
     QGridLayout *gridLayout;
     QTableWidget *mainTable;
     QMenuBar *menuBar;
     QMenu *menuFile;
     QMenu *menuMembers;
+    QMenu *menuTools;
     QToolBar *toolBar;
 
     void setupUi(QMainWindow *InfoManiac)
@@ -66,8 +69,12 @@ public:
         actionSave_As->setObjectName(QString::fromUtf8("actionSave_As"));
         actionOpen = new QAction(InfoManiac);
         actionOpen->setObjectName(QString::fromUtf8("actionOpen"));
-        actionNew = new QAction(InfoManiac);
-        actionNew->setObjectName(QString::fromUtf8("actionNew"));
+        actionNewDatabase = new QAction(InfoManiac);
+        actionNewDatabase->setObjectName(QString::fromUtf8("actionNewDatabase"));
+        actionSettings = new QAction(InfoManiac);
+        actionSettings->setObjectName(QString::fromUtf8("actionSettings"));
+        actionSaveToolBarState = new QAction(InfoManiac);
+        actionSaveToolBarState->setObjectName(QString::fromUtf8("actionSaveToolBarState"));
         centralWidget = new QWidget(InfoManiac);
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
         gridLayout = new QGridLayout(centralWidget);
@@ -95,6 +102,8 @@ public:
         menuFile->setObjectName(QString::fromUtf8("menuFile"));
         menuMembers = new QMenu(menuBar);
         menuMembers->setObjectName(QString::fromUtf8("menuMembers"));
+        menuTools = new QMenu(menuBar);
+        menuTools->setObjectName(QString::fromUtf8("menuTools"));
         InfoManiac->setMenuBar(menuBar);
         toolBar = new QToolBar(InfoManiac);
         toolBar->setObjectName(QString::fromUtf8("toolBar"));
@@ -102,7 +111,8 @@ public:
 
         menuBar->addAction(menuFile->menuAction());
         menuBar->addAction(menuMembers->menuAction());
-        menuFile->addAction(actionNew);
+        menuBar->addAction(menuTools->menuAction());
+        menuFile->addAction(actionNewDatabase);
         menuFile->addAction(actionOpen);
         menuFile->addAction(actionSave);
         menuFile->addAction(actionSave_As);
@@ -111,6 +121,7 @@ public:
         menuMembers->addAction(actionRemoveMember);
         menuMembers->addAction(actionNewColumn);
         menuMembers->addAction(actionRemoveColumn);
+        menuTools->addAction(actionSettings);
         toolBar->addAction(actionNewMember);
         toolBar->addAction(actionRemoveMember);
         toolBar->addAction(actionNewColumn);
@@ -118,6 +129,7 @@ public:
 
         retranslateUi(InfoManiac);
         QObject::connect(actionQuit, SIGNAL(triggered()), InfoManiac, SLOT(close()));
+        QObject::connect(toolBar, SIGNAL(visibilityChanged(bool)), actionSaveToolBarState, SLOT(trigger()));
 
         QMetaObject::connectSlotsByName(InfoManiac);
     } // setupUi
@@ -139,14 +151,18 @@ public:
         actionSave_As->setShortcut(QApplication::translate("InfoManiac", "Ctrl+Shift+S", 0, QApplication::UnicodeUTF8));
         actionOpen->setText(QApplication::translate("InfoManiac", "Open Database", 0, QApplication::UnicodeUTF8));
         actionOpen->setShortcut(QApplication::translate("InfoManiac", "Ctrl+O", 0, QApplication::UnicodeUTF8));
-        actionNew->setText(QApplication::translate("InfoManiac", "New Database", 0, QApplication::UnicodeUTF8));
-        actionNew->setShortcut(QApplication::translate("InfoManiac", "Ctrl+Shift+N", 0, QApplication::UnicodeUTF8));
+        actionNewDatabase->setText(QApplication::translate("InfoManiac", "New Database", 0, QApplication::UnicodeUTF8));
+        actionNewDatabase->setShortcut(QApplication::translate("InfoManiac", "Ctrl+Shift+N", 0, QApplication::UnicodeUTF8));
+        actionSettings->setText(QApplication::translate("InfoManiac", "Settings", 0, QApplication::UnicodeUTF8));
+        actionSettings->setShortcut(QApplication::translate("InfoManiac", "Ctrl+,", 0, QApplication::UnicodeUTF8));
+        actionSaveToolBarState->setText(QApplication::translate("InfoManiac", "SaveToolBarState", 0, QApplication::UnicodeUTF8));
         QTableWidgetItem *___qtablewidgetitem = mainTable->horizontalHeaderItem(0);
         ___qtablewidgetitem->setText(QApplication::translate("InfoManiac", "First Name", 0, QApplication::UnicodeUTF8));
         QTableWidgetItem *___qtablewidgetitem1 = mainTable->horizontalHeaderItem(1);
         ___qtablewidgetitem1->setText(QApplication::translate("InfoManiac", "Last Name", 0, QApplication::UnicodeUTF8));
         menuFile->setTitle(QApplication::translate("InfoManiac", "File", 0, QApplication::UnicodeUTF8));
         menuMembers->setTitle(QApplication::translate("InfoManiac", "Members", 0, QApplication::UnicodeUTF8));
+        menuTools->setTitle(QApplication::translate("InfoManiac", "Tools", 0, QApplication::UnicodeUTF8));
         toolBar->setWindowTitle(QApplication::translate("InfoManiac", "toolBar", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 

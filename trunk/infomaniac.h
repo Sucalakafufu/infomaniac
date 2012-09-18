@@ -4,6 +4,8 @@
 #include "errordialog.h"
 #include "newcolumndialog.h"
 #include "dbinterface.h"
+#include "cfginterface.h"
+#include "settingsdialog.h"
 #include <QMainWindow>
 #include <QString>
 
@@ -19,7 +21,7 @@ public:
     explicit InfoManiac(QWidget *parent = 0);
     ~InfoManiac();
 
-private slots:
+private slots:    
     void on_actionNewMember_triggered();
 
     void on_actionRemoveMember_triggered();
@@ -32,8 +34,18 @@ private slots:
 
     void on_actionOpen_triggered();
 
+    void on_actionSaveToolBarState_triggered();
+
+    void on_actionSettings_triggered();
+
+    void on_actionNewDatabase_triggered();
+
+    void on_actionSave_As_triggered();
+
 private:
     Ui::InfoManiac *ui;
+
+    cfgInterface cfg;
 
     dbInterface db;
 };
