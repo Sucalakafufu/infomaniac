@@ -2,12 +2,20 @@
 
 dbInterface::dbInterface()
 {
+    dbOpen = false;
     saveTypes = "DataBase Files(*.db)\0*.db\0";
+    saveAsTypes = "DataBase Files(*.db)\0*.db\0";
     openTypes = "DataBase Files(*.db)\0*.db\0";
+}
+
+bool dbInterface::dbIsOpen()
+{
+    return dbOpen;
 }
 
 void dbInterface::populateDB(QTableWidget *table)
 {
+    dbColumns.clear();
     db.clear();
 
     QVector<QString> tempDB;
@@ -35,16 +43,35 @@ void dbInterface::populateDB(QTableWidget *table)
 void dbInterface::saveDB(QWidget *parent)
 {
     dialogType = "Save Database";
-    saveFileName = QFileDialog::getSaveFileName(parent,dialogType,QString(),saveTypes);
+    if (!dbOpen)
+        saveFileName = QFileDialog::getSaveFileName(parent,dialogType,QString(),saveTypes);
 
+    saveFile(saveFileName);
+
+}
+
+void dbInterface::saveDBAs(QWidget *parent)
+{
+    dialogType = "Save Database As...";
+
+    saveFileName = QFileDialog::getSaveFileName(parent,dialogType,QString(),saveAsTypes);
+
+    saveFile(saveFileName);
+}
+
+void dbInterface::saveFile(QString saveFileName)
+{
     if (!saveFileName.isEmpty())
     {
+        dbOpen = true;
+
         //dbFile(saveFileName);
         dbFile.setFileName(saveFileName);
         dbFile.open(QFile::WriteOnly);
 
         QTextStream fout(&dbFile);
 
+        //output column amount and column data
         fout << dbColumns.size() << endl;
         for (int i = 0; i < dbColumns.size(); i++)
         {
@@ -54,6 +81,7 @@ void dbInterface::saveDB(QWidget *parent)
                 fout << dbColumns.at(i) << endl;
         }
 
+        //output member amount and member data
         fout << db.size() << endl;
         for (int i = 0; i < db.size(); i++)
         {
@@ -75,34 +103,71 @@ void dbInterface::openDB(QWidget *parent, QTableWidget *table)
     dialogType = "Open Database";
     openFileName = QFileDialog::getOpenFileName(parent,dialogType,QString(),openTypes);
 
+    openFile(openFileName, table);
+}
+
+void dbInterface::openLastDB(QTableWidget *table)
+{
+    openFileName = cfg.getLastDBFileName();
+
+    openFile(openFileName, table);
+}
+
+void dbInterface::openFile(QString openFileName, QTableWidget *table)
+{
     if (!openFileName.isEmpty())
     {
+        dbOpen = true;
+        saveFileName = openFileName;
+        cfg.setLastDBFileName(openFileName);
         dbFile.setFileName(openFileName);
-        dbFile.open(QFile::ReadOnly);
 
-        QTextStream fin(&dbFile);
-
-        columnNumber = fin.readLine();
-        table->setColumnCount(columnNumber.toInt());
-        for (int i = 0; i < columnNumber.toInt(); i++)
+        if (dbFile.exists())
         {
-            QTableWidgetItem *newColumnItem = new QTableWidgetItem();
-            newColumnText = fin.readLine();
-            newColumnItem->setText(newColumnText);
-            table->setHorizontalHeaderItem(i,newColumnItem);
-        }
+            dbFile.open(QFile::ReadOnly);
 
-        memberNumber = fin.readLine();
-        table->setRowCount(memberNumber.toInt());
-        for (int i = 0; i < memberNumber.toInt(); i++)
-        {
-            for (int j = 0; j < columnNumber.toInt(); j++)
+            QTextStream fin(&dbFile);
+
+            table->clear();
+            //input column amount and column data
+            columnNumber = fin.readLine();
+            table->setColumnCount(columnNumber.toInt());
+            for (int i = 0; i < columnNumber.toInt(); i++)
             {
-                QTableWidgetItem *newMemberItem = new QTableWidgetItem();
-                newMemberText = fin.readLine();
-                newMemberItem->setText(newMemberText);
-                table->setItem(i,j,newMemberItem);
+                QTableWidgetItem *newColumnItem = new QTableWidgetItem();
+                newColumnText = fin.readLine();
+                newColumnItem->setText(newColumnText);
+                table->setHorizontalHeaderItem(i,newColumnItem);
             }
+
+            //input member amount and member data
+            memberNumber = fin.readLine();
+            table->setRowCount(memberNumber.toInt());
+            for (int i = 0; i < memberNumber.toInt(); i++)
+            {
+                for (int j = 0; j < columnNumber.toInt(); j++)
+                {
+                    QTableWidgetItem *newMemberItem = new QTableWidgetItem();
+                    newMemberText = fin.readLine();
+                    newMemberItem->setText(newMemberText);
+                    table->setItem(i,j,newMemberItem);
+                }
+            }
+            dbFile.close();
         }
     }
+}
+
+void dbInterface::newDB(QTableWidget *table)
+{
+    dbOpen = false;
+
+    table->setRowCount(0);
+    table->setColumnCount(2);
+    QTableWidgetItem *newColumnItem = new QTableWidgetItem();
+    newColumnItem->setText("First Name");
+    table->setHorizontalHeaderItem(0,newColumnItem);
+    QTableWidgetItem *newColumnItem2 = new QTableWidgetItem();
+    newColumnItem2->setText("Last Name");
+    table->setHorizontalHeaderItem(1,newColumnItem2);
 }

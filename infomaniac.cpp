@@ -11,6 +11,12 @@ InfoManiac::InfoManiac(QWidget *parent) :
 {
     ui->setupUi(this);
     setWindowTitle(APPNAME+VERSIONNUM);
+
+    //initialize
+    ui->toolBar->setHidden(cfg.getToolBarState());
+
+    if (cfg.getRememberDB())
+        db.openLastDB(ui->mainTable);
 }
 
 InfoManiac::~InfoManiac()
@@ -73,4 +79,25 @@ void InfoManiac::on_actionSave_triggered()
 void InfoManiac::on_actionOpen_triggered()
 {
     db.openDB(this, ui->mainTable);
+}
+
+void InfoManiac::on_actionSaveToolBarState_triggered()
+{
+    cfg.setToolBarState(ui->toolBar->isHidden());
+}
+
+void InfoManiac::on_actionSettings_triggered()
+{
+    SettingsDialog *settings = new SettingsDialog(this);
+    settings->exec();
+}
+void InfoManiac::on_actionNewDatabase_triggered()
+{
+    db.newDB(ui->mainTable);
+}
+
+void InfoManiac::on_actionSave_As_triggered()
+{
+    db.populateDB(ui->mainTable);
+    db.saveDBAs(this);
 }

@@ -17,18 +17,21 @@ SOURCES += main.cpp\
     newcolumndialog.cpp \
     errordialog.cpp \
     cfginterface.cpp \
-    dbinterface.cpp
+    dbinterface.cpp \
+    settingsdialog.cpp
 
 HEADERS  += \
     newcolumndialog.h \
     errordialog.h \
     infomaniac.h \
     cfginterface.h \
-    dbinterface.h
+    dbinterface.h \
+    settingsdialog.h
 
 FORMS    += infomaniac.ui \
     newcolumndialog.ui \
-    errordialog.ui
+    errordialog.ui \
+    settingsdialog.ui
 
 Release:DESTDIR = $$TARGET-$$VERSION$$NONSTATIC
 
