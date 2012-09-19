@@ -2,6 +2,7 @@
 #define DBINTERFACE_H
 
 #include "cfginterface.h"
+//#include "exportdialog.h"
 #include <QFile>
 #include <QFileDialog>
 #include <QTextStream>
@@ -16,9 +17,12 @@ public:
     void populateDB(QTableWidget *table);
     void saveDB(QWidget *parent);
     void saveDBAs(QWidget *parent);
-    void openDB(QWidget *parent,QTableWidget *table);
-    void openLastDB(QTableWidget *table);
+    bool openDB(QWidget *parent,QTableWidget *table);
+    bool openLastDB(QTableWidget *table);
     void newDB(QTableWidget *table);
+    //void exportDB(QWidget *parent);
+    void exportDB(QWidget *parent, QString exportDialogType, QString exportTypes,
+                  QString exportFileType, QTableWidget *exportTable);
 
     bool dbIsOpen();
 
@@ -31,6 +35,7 @@ private:
             dialogType,
             saveFileName,
             openFileName,
+            exportFileName,
             columnNumber,
             memberNumber,
             newColumnText,
@@ -43,8 +48,8 @@ private:
 
     cfgInterface cfg;
 
-    void saveFile(QString saveFileName);
-    void openFile(QString openFileName, QTableWidget *table);
+    void saveFile(QString saveFileName, bool exporting, QString saveType);
+    bool openFile(QString openFileName, QTableWidget *table);
 };
 
 #endif // DBINTERFACE_H

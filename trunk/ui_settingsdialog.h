@@ -1,8 +1,8 @@
 /********************************************************************************
 ** Form generated from reading UI file 'settingsdialog.ui'
 **
-** Created: Mon Sep 17 20:47:10 2012
-**      by: Qt User Interface Compiler version 4.8.1
+** Created: Tue Sep 18 01:24:34 2012
+**      by: Qt User Interface Compiler version 4.8.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -29,13 +29,15 @@ public:
     QVBoxLayout *verticalLayout;
     QLabel *StartupLabel;
     QCheckBox *OpenLastDBcheckBox;
-    QDialogButtonBox *SettingsDialogbuttonBox;
+    QLabel *LookAndFeelLabel;
+    QCheckBox *ShowCurrentDBcheckBox;
+    QDialogButtonBox *SettingsDialogButtonBox;
 
     void setupUi(QDialog *SettingsDialog)
     {
         if (SettingsDialog->objectName().isEmpty())
             SettingsDialog->setObjectName(QString::fromUtf8("SettingsDialog"));
-        SettingsDialog->resize(174, 83);
+        SettingsDialog->resize(174, 125);
         verticalLayout = new QVBoxLayout(SettingsDialog);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         StartupLabel = new QLabel(SettingsDialog);
@@ -48,16 +50,26 @@ public:
 
         verticalLayout->addWidget(OpenLastDBcheckBox);
 
-        SettingsDialogbuttonBox = new QDialogButtonBox(SettingsDialog);
-        SettingsDialogbuttonBox->setObjectName(QString::fromUtf8("SettingsDialogbuttonBox"));
-        SettingsDialogbuttonBox->setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::Ok);
-        SettingsDialogbuttonBox->setCenterButtons(true);
+        LookAndFeelLabel = new QLabel(SettingsDialog);
+        LookAndFeelLabel->setObjectName(QString::fromUtf8("LookAndFeelLabel"));
 
-        verticalLayout->addWidget(SettingsDialogbuttonBox);
+        verticalLayout->addWidget(LookAndFeelLabel);
+
+        ShowCurrentDBcheckBox = new QCheckBox(SettingsDialog);
+        ShowCurrentDBcheckBox->setObjectName(QString::fromUtf8("ShowCurrentDBcheckBox"));
+
+        verticalLayout->addWidget(ShowCurrentDBcheckBox);
+
+        SettingsDialogButtonBox = new QDialogButtonBox(SettingsDialog);
+        SettingsDialogButtonBox->setObjectName(QString::fromUtf8("SettingsDialogButtonBox"));
+        SettingsDialogButtonBox->setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::Ok);
+        SettingsDialogButtonBox->setCenterButtons(true);
+
+        verticalLayout->addWidget(SettingsDialogButtonBox);
 
 
         retranslateUi(SettingsDialog);
-        QObject::connect(SettingsDialogbuttonBox, SIGNAL(rejected()), SettingsDialog, SLOT(close()));
+        QObject::connect(SettingsDialogButtonBox, SIGNAL(rejected()), SettingsDialog, SLOT(close()));
 
         QMetaObject::connectSlotsByName(SettingsDialog);
     } // setupUi
@@ -67,6 +79,8 @@ public:
         SettingsDialog->setWindowTitle(QApplication::translate("SettingsDialog", "Form", 0, QApplication::UnicodeUTF8));
         StartupLabel->setText(QApplication::translate("SettingsDialog", "Startup", 0, QApplication::UnicodeUTF8));
         OpenLastDBcheckBox->setText(QApplication::translate("SettingsDialog", "Open Last Database", 0, QApplication::UnicodeUTF8));
+        LookAndFeelLabel->setText(QApplication::translate("SettingsDialog", "Look and Feel", 0, QApplication::UnicodeUTF8));
+        ShowCurrentDBcheckBox->setText(QApplication::translate("SettingsDialog", "Show Current Databse", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };

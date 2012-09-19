@@ -1,8 +1,8 @@
 /********************************************************************************
 ** Form generated from reading UI file 'infomaniac.ui'
 **
-** Created: Mon Sep 17 20:47:10 2012
-**      by: Qt User Interface Compiler version 4.8.1
+** Created: Tue Sep 18 01:24:34 2012
+**      by: Qt User Interface Compiler version 4.8.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -14,13 +14,14 @@
 #include <QtGui/QAction>
 #include <QtGui/QApplication>
 #include <QtGui/QButtonGroup>
-#include <QtGui/QGridLayout>
 #include <QtGui/QHeaderView>
+#include <QtGui/QLabel>
 #include <QtGui/QMainWindow>
 #include <QtGui/QMenu>
 #include <QtGui/QMenuBar>
 #include <QtGui/QTableWidget>
 #include <QtGui/QToolBar>
+#include <QtGui/QVBoxLayout>
 #include <QtGui/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -39,8 +40,10 @@ public:
     QAction *actionNewDatabase;
     QAction *actionSettings;
     QAction *actionSaveToolBarState;
+    QAction *actionExport_Database;
     QWidget *centralWidget;
-    QGridLayout *gridLayout;
+    QVBoxLayout *verticalLayout;
+    QLabel *currentDBLabel;
     QTableWidget *mainTable;
     QMenuBar *menuBar;
     QMenu *menuFile;
@@ -75,12 +78,20 @@ public:
         actionSettings->setObjectName(QString::fromUtf8("actionSettings"));
         actionSaveToolBarState = new QAction(InfoManiac);
         actionSaveToolBarState->setObjectName(QString::fromUtf8("actionSaveToolBarState"));
+        actionExport_Database = new QAction(InfoManiac);
+        actionExport_Database->setObjectName(QString::fromUtf8("actionExport_Database"));
         centralWidget = new QWidget(InfoManiac);
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
-        gridLayout = new QGridLayout(centralWidget);
-        gridLayout->setSpacing(6);
-        gridLayout->setContentsMargins(11, 11, 11, 11);
-        gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
+        verticalLayout = new QVBoxLayout(centralWidget);
+        verticalLayout->setSpacing(6);
+        verticalLayout->setContentsMargins(11, 11, 11, 11);
+        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        currentDBLabel = new QLabel(centralWidget);
+        currentDBLabel->setObjectName(QString::fromUtf8("currentDBLabel"));
+        currentDBLabel->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
+
+        verticalLayout->addWidget(currentDBLabel);
+
         mainTable = new QTableWidget(centralWidget);
         if (mainTable->columnCount() < 2)
             mainTable->setColumnCount(2);
@@ -92,7 +103,7 @@ public:
         mainTable->setSortingEnabled(true);
         mainTable->horizontalHeader()->setProperty("showSortIndicator", QVariant(false));
 
-        gridLayout->addWidget(mainTable, 0, 0, 1, 1);
+        verticalLayout->addWidget(mainTable);
 
         InfoManiac->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(InfoManiac);
@@ -116,6 +127,7 @@ public:
         menuFile->addAction(actionOpen);
         menuFile->addAction(actionSave);
         menuFile->addAction(actionSave_As);
+        menuFile->addAction(actionExport_Database);
         menuFile->addAction(actionQuit);
         menuMembers->addAction(actionNewMember);
         menuMembers->addAction(actionRemoveMember);
@@ -156,6 +168,8 @@ public:
         actionSettings->setText(QApplication::translate("InfoManiac", "Settings", 0, QApplication::UnicodeUTF8));
         actionSettings->setShortcut(QApplication::translate("InfoManiac", "Ctrl+,", 0, QApplication::UnicodeUTF8));
         actionSaveToolBarState->setText(QApplication::translate("InfoManiac", "SaveToolBarState", 0, QApplication::UnicodeUTF8));
+        actionExport_Database->setText(QApplication::translate("InfoManiac", "Export Database", 0, QApplication::UnicodeUTF8));
+        currentDBLabel->setText(QString());
         QTableWidgetItem *___qtablewidgetitem = mainTable->horizontalHeaderItem(0);
         ___qtablewidgetitem->setText(QApplication::translate("InfoManiac", "First Name", 0, QApplication::UnicodeUTF8));
         QTableWidgetItem *___qtablewidgetitem1 = mainTable->horizontalHeaderItem(1);

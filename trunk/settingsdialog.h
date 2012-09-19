@@ -17,7 +17,7 @@ public:
     ~SettingsDialog();
     
 private slots:
-    void on_SettingsDialogbuttonBox_accepted();
+    void on_SettingsDialogButtonBox_accepted();
 
 private:
     Ui::SettingsDialog *ui;
