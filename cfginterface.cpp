@@ -17,7 +17,8 @@ void cfgInterface::reInit()
 
         hideToolBar = false;
         rememberLastDB = true;
-        lastDBFileName = "\\0";
+        showCurrentDB = true;
+        lastDBFileName = "\n";
         cfgUpdate();
     }
     else
@@ -28,6 +29,7 @@ void cfgInterface::reInit()
         //initiate settings
         hideToolBar = fin.readLine().toInt();
         rememberLastDB = fin.readLine().toInt();
+        showCurrentDB = fin.readLine().toInt();
         lastDBFileName = fin.readLine();
 
         cfgFile.close();
@@ -35,7 +37,7 @@ void cfgInterface::reInit()
 }
 
 void cfgInterface::cfgUpdate()
-{
+{        
     cfgFile.setFileName(cfgFileName);
 
     cfgFile.open(QFile::WriteOnly);
@@ -44,40 +46,60 @@ void cfgInterface::cfgUpdate()
     //write config
     fout << hideToolBar << endl;
     fout << rememberLastDB << endl;
-    fout << lastDBFileName << endl;
+    fout << showCurrentDB << endl;
+    fout << lastDBFileName;
 
     cfgFile.close();
 }
 
 void cfgInterface::setToolBarState(bool hide)
 {
+    reInit();
     hideToolBar = hide;
     cfgUpdate();
 }
 
 bool cfgInterface::getToolBarState()
 {
+    reInit();
     return hideToolBar;
 }
 
 void cfgInterface::setRememberDB(bool remember)
 {
+    reInit();
     rememberLastDB = remember;
     cfgUpdate();
 }
 
 bool cfgInterface::getRememberDB()
 {
+    reInit();
     return rememberLastDB;
+}
+
+void cfgInterface::setShowCurrentDB(bool show)
+{
+    reInit();
+    showCurrentDB = show;
+    cfgUpdate();
+}
+
+bool cfgInterface::getShowCurrentDB()
+{
+    reInit();
+    return showCurrentDB;
 }
 
 void cfgInterface::setLastDBFileName(QString openDBFileName)
 {
+    reInit();
     lastDBFileName = openDBFileName;
     cfgUpdate();
 }
 
 QString cfgInterface::getLastDBFileName()
 {
+    reInit();
     return lastDBFileName;
 }

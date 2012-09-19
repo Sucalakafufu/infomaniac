@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>174</width>
-    <height>83</height>
+    <height>125</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -29,7 +29,21 @@
     </widget>
    </item>
    <item>
-    <widget class="QDialogButtonBox" name="SettingsDialogbuttonBox">
+    <widget class="QLabel" name="LookAndFeelLabel">
+     <property name="text">
+      <string>Look and Feel</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QCheckBox" name="ShowCurrentDBcheckBox">
+     <property name="text">
+      <string>Show Current Databse</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QDialogButtonBox" name="SettingsDialogButtonBox">
      <property name="standardButtons">
       <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
      </property>
@@ -43,7 +57,7 @@
  <resources/>
  <connections>
   <connection>
-   <sender>SettingsDialogbuttonBox</sender>
+   <sender>SettingsDialogButtonBox</sender>
    <signal>rejected()</signal>
    <receiver>SettingsDialog</receiver>
    <slot>close()</slot>

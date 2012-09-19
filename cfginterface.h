@@ -10,8 +10,6 @@ class cfgInterface
 public:
     cfgInterface();
 
-    void reInit();
-
     void setToolBarState(bool hide);
     bool getToolBarState();
 
@@ -21,15 +19,20 @@ public:
     void setLastDBFileName(QString openDBFileName);
     QString getLastDBFileName();
 
+    void setShowCurrentDB(bool show);
+    bool getShowCurrentDB();
+
 private:
     bool hideToolBar;
     bool rememberLastDB;
+    bool showCurrentDB;
 
     QString cfgFileName,
             lastDBFileName;
 
     QFile cfgFile;
 
+    void reInit();
     void cfgUpdate();
 };
 

@@ -6,6 +6,7 @@
 #include "dbinterface.h"
 #include "cfginterface.h"
 #include "settingsdialog.h"
+#include "exportdialog.h"
 #include <QMainWindow>
 #include <QString>
 
@@ -42,12 +43,18 @@ private slots:
 
     void on_actionSave_As_triggered();
 
+    void on_actionExport_Database_triggered();
+
 private:
     Ui::InfoManiac *ui;
+
+    QString currentDBFileName;
 
     cfgInterface cfg;
 
     dbInterface db;
+
+    void refreshUI();
 };
 
 #endif // INFOMANIAC_H

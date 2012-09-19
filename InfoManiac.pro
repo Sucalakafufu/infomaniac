@@ -5,8 +5,9 @@
 #-------------------------------------------------
 
 QT       += core gui
-VERSION = 1.0
-NONSTATIC =
+VERSION = 1.1
+STAGE = Alpha
+TYPE = Static
 
 TARGET = InfoManiac
 TEMPLATE = app
@@ -18,7 +19,8 @@ SOURCES += main.cpp\
     errordialog.cpp \
     cfginterface.cpp \
     dbinterface.cpp \
-    settingsdialog.cpp
+    settingsdialog.cpp \
+    exportdialog.cpp
 
 HEADERS  += \
     newcolumndialog.h \
@@ -26,13 +28,15 @@ HEADERS  += \
     infomaniac.h \
     cfginterface.h \
     dbinterface.h \
-    settingsdialog.h
+    settingsdialog.h \
+    exportdialog.h
 
 FORMS    += infomaniac.ui \
     newcolumndialog.ui \
     errordialog.ui \
-    settingsdialog.ui
+    settingsdialog.ui \
+    exportdialog.ui
 
-Release:DESTDIR = $$TARGET-$$VERSION$$NONSTATIC
+Release:DESTDIR = $$TARGET-$$VERSION-$$STAGE-$$TYPE
 
 CONFIG += static

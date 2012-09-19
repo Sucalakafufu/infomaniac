@@ -10,6 +10,7 @@ SettingsDialog::SettingsDialog(QWidget *parent) :
 
     //initialize
     ui->OpenLastDBcheckBox->setChecked(cfg.getRememberDB());
+    ui->ShowCurrentDBcheckBox->setChecked(cfg.getShowCurrentDB());
 }
 
 SettingsDialog::~SettingsDialog()
@@ -17,8 +18,9 @@ SettingsDialog::~SettingsDialog()
     delete ui;
 }
 
-void SettingsDialog::on_SettingsDialogbuttonBox_accepted()
+void SettingsDialog::on_SettingsDialogButtonBox_accepted()
 {
     cfg.setRememberDB(ui->OpenLastDBcheckBox->isChecked());
+    cfg.setShowCurrentDB(ui->ShowCurrentDBcheckBox->isChecked());
     close();
 }

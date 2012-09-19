@@ -3,17 +3,21 @@
 
 //static vars
 const static QString APPNAME = "InfoManiac Alpha";
-const static QString VERSIONNUM = "1.0";
+const static QString VERSIONNUM = "1.1";
 
 InfoManiac::InfoManiac(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::InfoManiac)
 {
     ui->setupUi(this);
-    setWindowTitle(APPNAME+VERSIONNUM);
+    setWindowTitle(APPNAME+" "+VERSIONNUM);
 
     //initialize
     ui->toolBar->setHidden(cfg.getToolBarState());
+    currentDBFileName = cfg.getLastDBFileName();
+
+    if (cfg.getShowCurrentDB())    
+        ui->currentDBLabel->setText("Current Database: "+cfg.getLastDBFileName());        
 
     if (cfg.getRememberDB())
         db.openLastDB(ui->mainTable);
@@ -22,6 +26,14 @@ InfoManiac::InfoManiac(QWidget *parent) :
 InfoManiac::~InfoManiac()
 {
     delete ui;
+}
+
+void InfoManiac::refreshUI()
+{
+    if (cfg.getShowCurrentDB())
+        ui->currentDBLabel->setText("Current Database: "+currentDBFileName);
+    else
+        ui->currentDBLabel->setText("");
 }
 
 void InfoManiac::on_actionNewMember_triggered()
@@ -78,7 +90,9 @@ void InfoManiac::on_actionSave_triggered()
 
 void InfoManiac::on_actionOpen_triggered()
 {
-    db.openDB(this, ui->mainTable);
+    if (db.openDB(this, ui->mainTable))
+        currentDBFileName = cfg.getLastDBFileName();
+    refreshUI();
 }
 
 void InfoManiac::on_actionSaveToolBarState_triggered()
@@ -89,15 +103,26 @@ void InfoManiac::on_actionSaveToolBarState_triggered()
 void InfoManiac::on_actionSettings_triggered()
 {
     SettingsDialog *settings = new SettingsDialog(this);
-    settings->exec();
+    settings->exec();   
+
+    refreshUI();
 }
 void InfoManiac::on_actionNewDatabase_triggered()
 {
     db.newDB(ui->mainTable);
+
+    currentDBFileName = "Unsaved Database";
+    refreshUI();
 }
 
 void InfoManiac::on_actionSave_As_triggered()
 {
     db.populateDB(ui->mainTable);
     db.saveDBAs(this);
+}
+
+void InfoManiac::on_actionExport_Database_triggered()
+{
+    ExportDialog *exportDialog = new ExportDialog(this, ui->mainTable);
+    exportDialog->exec();
 }

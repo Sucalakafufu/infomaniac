@@ -46,7 +46,7 @@ void dbInterface::saveDB(QWidget *parent)
     if (!dbOpen)
         saveFileName = QFileDialog::getSaveFileName(parent,dialogType,QString(),saveTypes);
 
-    saveFile(saveFileName);
+    saveFile(saveFileName, false, ".db");
 
 }
 
@@ -56,74 +56,108 @@ void dbInterface::saveDBAs(QWidget *parent)
 
     saveFileName = QFileDialog::getSaveFileName(parent,dialogType,QString(),saveAsTypes);
 
-    saveFile(saveFileName);
+    saveFile(saveFileName, false, ".db");
 }
 
-void dbInterface::saveFile(QString saveFileName)
+void dbInterface::saveFile(QString saveFileName, bool exporting, QString saveType)
 {
     if (!saveFileName.isEmpty())
     {
-        dbOpen = true;
-
-        //dbFile(saveFileName);
-        dbFile.setFileName(saveFileName);
-        dbFile.open(QFile::WriteOnly);
-
-        QTextStream fout(&dbFile);
-
-        //output column amount and column data
-        fout << dbColumns.size() << endl;
-        for (int i = 0; i < dbColumns.size(); i++)
+        QFile exportFile;
+        if (!exporting)
         {
-            if (dbColumns.at(i) == "")
-                fout << "\\0\n";
-            else
-                fout << dbColumns.at(i) << endl;
-        }
+            dbOpen = true;
+            cfg.setLastDBFileName(saveFileName);
+            dbFile.setFileName(saveFileName);
+            dbFile.open(QFile::WriteOnly);
 
-        //output member amount and member data
-        fout << db.size() << endl;
-        for (int i = 0; i < db.size(); i++)
-        {
-            for (int j = 0; j < db.at(i).size(); j++)
+            QTextStream fout(&dbFile);
+
+            //output column amount and column data
+            fout << dbColumns.size() << endl;
+            for (int i = 0; i < dbColumns.size(); i++)
             {
-                if (db.at(i).at(j) == "")
-                    fout << "\\0\n";
+                if (dbColumns.at(i) == "")
+                    fout << "\n";
                 else
-                    fout << db.at(i).at(j) << endl;
+                    fout << dbColumns.at(i) << endl;
             }
-        }
 
-        dbFile.close();
+            //output member amount and member data
+            fout << db.size() << endl;
+            for (int i = 0; i < db.size(); i++)
+            {
+                for (int j = 0; j < db.at(i).size(); j++)
+                {
+                    if (db.at(i).at(j) == "")
+                        fout << "\n";
+                    else
+                        fout << db.at(i).at(j) << endl;
+                }
+            }
+            dbFile.close();
+        }
+        else
+        {
+            exportFile.setFileName(saveFileName);
+            exportFile.open(QFile::WriteOnly);
+
+            QTextStream fout(&exportFile);
+
+            if (saveType == ".txt")
+            {
+                for (int i = 0; i < dbColumns.size(); i++)
+                {
+                    if (dbColumns.at(i) == "")
+                        fout << "\t\t";
+                    else
+                        fout << dbColumns.at(i) << "\t";
+                }
+
+                fout << endl;
+                for (int i = 0; i < db.size(); i++)
+                {
+                    for (int j = 0; j < db.at(i).size(); j++)
+                    {
+                        if (db.at(i).at(j) == "")
+                            fout << "\t\t";
+                        else
+                            fout << db.at(i).at(j) << "\t";
+                    }
+                    fout << endl;
+                }
+            }
+            exportFile.close();
+        }
     }
 }
 
-void dbInterface::openDB(QWidget *parent, QTableWidget *table)
+bool dbInterface::openDB(QWidget *parent, QTableWidget *table)
 {
     dialogType = "Open Database";
     openFileName = QFileDialog::getOpenFileName(parent,dialogType,QString(),openTypes);
 
-    openFile(openFileName, table);
+    return openFile(openFileName, table);
 }
 
-void dbInterface::openLastDB(QTableWidget *table)
+bool dbInterface::openLastDB(QTableWidget *table)
 {
     openFileName = cfg.getLastDBFileName();
 
-    openFile(openFileName, table);
+    return openFile(openFileName, table);
 }
 
-void dbInterface::openFile(QString openFileName, QTableWidget *table)
+bool dbInterface::openFile(QString openFileName, QTableWidget *table)
 {
     if (!openFileName.isEmpty())
     {
-        dbOpen = true;
         saveFileName = openFileName;
         cfg.setLastDBFileName(openFileName);
         dbFile.setFileName(openFileName);
 
         if (dbFile.exists())
         {
+            dbOpen = true;
             dbFile.open(QFile::ReadOnly);
 
             QTextStream fin(&dbFile);
@@ -149,13 +183,18 @@ void dbInterface::openFile(QString openFileName, QTableWidget *table)
                 {
                     QTableWidgetItem *newMemberItem = new QTableWidgetItem();
                     newMemberText = fin.readLine();
-                    newMemberItem->setText(newMemberText);
+                    if (newMemberText == "\n")
+                        newMemberItem->setText("");
+                    else
+                        newMemberItem->setText(newMemberText);
                     table->setItem(i,j,newMemberItem);
                 }
             }
-            dbFile.close();
+            dbFile.close();            
         }
+        return true;
     }
+    return false;
 }
 
 void dbInterface::newDB(QTableWidget *table)
@@ -170,4 +209,21 @@ void dbInterface::newDB(QTableWidget *table)
     QTableWidgetItem *newColumnItem2 = new QTableWidgetItem();
     newColumnItem2->setText("Last Name");
     table->setHorizontalHeaderItem(1,newColumnItem2);
+}
+
+//void dbInterface::exportDB(QWidget *parent)
+//{
+//    ExportDialog *exportDialog = new ExportDialog(parent);
+//    exportDialog->exec();
+//}
+
+void dbInterface::exportDB(QWidget *parent, QString exportDialogType, QString exportTypes,
+                           QString exportFileType, QTableWidget *exportTable)
+{
+    dialogType = exportDialogType;
+    populateDB(exportTable);
+
+    exportFileName = QFileDialog::getSaveFileName(parent,dialogType,QString(),exportTypes);
+
+    saveFile(exportFileName, true, exportFileType);
 }
