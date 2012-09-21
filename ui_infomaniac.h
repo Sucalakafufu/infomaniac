@@ -1,8 +1,8 @@
 /********************************************************************************
 ** Form generated from reading UI file 'infomaniac.ui'
 **
-** Created: Tue Sep 18 01:24:34 2012
-**      by: Qt User Interface Compiler version 4.8.2
+** Created: Thu Sep 20 20:40:37 2012
+**      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -100,7 +100,11 @@ public:
         QTableWidgetItem *__qtablewidgetitem1 = new QTableWidgetItem();
         mainTable->setHorizontalHeaderItem(1, __qtablewidgetitem1);
         mainTable->setObjectName(QString::fromUtf8("mainTable"));
+        mainTable->setContextMenuPolicy(Qt::DefaultContextMenu);
+        mainTable->setEditTriggers(QAbstractItemView::AnyKeyPressed|QAbstractItemView::DoubleClicked|QAbstractItemView::EditKeyPressed);
+        mainTable->setAlternatingRowColors(false);
         mainTable->setSortingEnabled(true);
+        mainTable->setWordWrap(true);
         mainTable->horizontalHeader()->setProperty("showSortIndicator", QVariant(false));
 
         verticalLayout->addWidget(mainTable);
@@ -169,6 +173,7 @@ public:
         actionSettings->setShortcut(QApplication::translate("InfoManiac", "Ctrl+,", 0, QApplication::UnicodeUTF8));
         actionSaveToolBarState->setText(QApplication::translate("InfoManiac", "SaveToolBarState", 0, QApplication::UnicodeUTF8));
         actionExport_Database->setText(QApplication::translate("InfoManiac", "Export Database", 0, QApplication::UnicodeUTF8));
+        actionExport_Database->setShortcut(QApplication::translate("InfoManiac", "Alt+E", 0, QApplication::UnicodeUTF8));
         currentDBLabel->setText(QString());
         QTableWidgetItem *___qtablewidgetitem = mainTable->horizontalHeaderItem(0);
         ___qtablewidgetitem->setText(QApplication::translate("InfoManiac", "First Name", 0, QApplication::UnicodeUTF8));

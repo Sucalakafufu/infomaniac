@@ -45,6 +45,8 @@ private slots:
 
     void on_actionExport_Database_triggered();
 
+    void on_mainTable_cellChanged(int row, int column);
+
 private:
     Ui::InfoManiac *ui;
 

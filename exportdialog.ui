@@ -47,6 +47,16 @@
           <string>.txt</string>
          </property>
         </item>
+        <item>
+         <property name="text">
+          <string>.csv</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>.xls</string>
+         </property>
+        </item>
        </widget>
       </item>
      </layout>

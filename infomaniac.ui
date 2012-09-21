@@ -27,7 +27,19 @@
     </item>
     <item>
      <widget class="QTableWidget" name="mainTable">
+      <property name="contextMenuPolicy">
+       <enum>Qt::DefaultContextMenu</enum>
+      </property>
+      <property name="editTriggers">
+       <set>QAbstractItemView::AnyKeyPressed|QAbstractItemView::DoubleClicked|QAbstractItemView::EditKeyPressed</set>
+      </property>
+      <property name="alternatingRowColors">
+       <bool>false</bool>
+      </property>
       <property name="sortingEnabled">
+       <bool>true</bool>
+      </property>
+      <property name="wordWrap">
        <bool>true</bool>
       </property>
       <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
@@ -183,6 +195,9 @@
   <action name="actionExport_Database">
    <property name="text">
     <string>Export Database</string>
+   </property>
+   <property name="shortcut">
+    <string>Alt+E</string>
    </property>
   </action>
  </widget>

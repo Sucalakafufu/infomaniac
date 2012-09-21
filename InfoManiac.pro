@@ -5,7 +5,7 @@
 #-------------------------------------------------
 
 QT       += core gui
-VERSION = 1.1
+VERSION = 1.3
 STAGE = Alpha
 TYPE = Static
 
