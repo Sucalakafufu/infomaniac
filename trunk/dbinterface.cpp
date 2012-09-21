@@ -127,6 +127,52 @@ void dbInterface::saveFile(QString saveFileName, bool exporting, QString saveTyp
                     fout << endl;
                 }
             }
+            else if (saveType == ".csv")
+            {
+                for (int i = 0; i < dbColumns.size(); i++)
+                {
+                    if (dbColumns.at(i) == "")
+                        fout << " ," ;
+                    else
+                        fout << dbColumns.at(i) << ",";
+                }
+
+                fout << endl;
+                for (int i = 0; i < db.size(); i++)
+                {
+                    for (int j = 0; j < db.at(i).size(); j++)
+                    {
+                        if (db.at(i).at(j) == "")
+                            fout << " ,";
+                        else
+                            fout << db.at(i).at(j) << ",";
+                    }
+                    fout << endl;
+                }
+            }
+            else if (saveType == ".xls")
+            {
+//                <?xml version="1.0"?>
+//                <Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+//                 xmlns:o="urn:schemas-microsoft-com:office:office"
+//                 xmlns:x="urn:schemas-microsoft-com:office:excel"
+//                 xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+//                 xmlns:html="http://www.w3.org/TR/REC-html40">
+//                 <Worksheet ss:Name="Sheet1">
+//                  <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="2" x:FullColumns="1"
+//                   x:FullRows="1">
+//                   <Row>
+//                    <Cell><Data ss:Type="String">Name</Data></Cell>
+//                    <Cell><Data ss:Type="String">Example</Data></Cell>
+//                   </Row>
+//                   <Row>
+//                    <Cell><Data ss:Type="String">Value</Data></Cell>
+//                    <Cell><Data ss:Type="Number">123</Data></Cell>
+//                   </Row>
+//                  </Table>
+//                 </Worksheet>
+//                </Workbook>                
+            }
             exportFile.close();
         }
     }
@@ -190,6 +236,7 @@ bool dbInterface::openFile(QString openFileName, QTableWidget *table)
                     table->setItem(i,j,newMemberItem);
                 }
             }
+            table->resizeColumnsToContents();
             dbFile.close();            
         }
         return true;

@@ -2,7 +2,6 @@
 #define DBINTERFACE_H
 
 #include "cfginterface.h"
-//#include "exportdialog.h"
 #include <QFile>
 #include <QFileDialog>
 #include <QTextStream>

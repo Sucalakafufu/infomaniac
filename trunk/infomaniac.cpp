@@ -39,6 +39,8 @@ void InfoManiac::refreshUI()
 void InfoManiac::on_actionNewMember_triggered()
 {
     ui->mainTable->setRowCount(ui->mainTable->rowCount()+1);
+    QModelIndex index = ui->mainTable->model()->index(ui->mainTable->rowCount()-1,0);
+    ui->mainTable->setCurrentIndex(index);
 }
 
 void InfoManiac::on_actionRemoveMember_triggered()
@@ -125,4 +127,9 @@ void InfoManiac::on_actionExport_Database_triggered()
 {
     ExportDialog *exportDialog = new ExportDialog(this, ui->mainTable);
     exportDialog->exec();
+}
+
+void InfoManiac::on_mainTable_cellChanged(int row, int column)
+{
+    ui->mainTable->resizeColumnsToContents();
 }
