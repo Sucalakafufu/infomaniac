@@ -19,13 +19,13 @@ public:
     void setLastDBFileName(QString openDBFileName);
     QString getLastDBFileName();
 
-    void setShowCurrentDB(bool show);
-    bool getShowCurrentDB();
+    void setShowOpenDB(bool show);
+    bool getShowOpenDB();
 
 private:
     bool hideToolBar;
     bool rememberLastDB;
-    bool showCurrentDB;
+    bool ShowOpenDB;
 
     QString cfgFileName,
             lastDBFileName;

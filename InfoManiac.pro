@@ -20,7 +20,8 @@ SOURCES += main.cpp\
     cfginterface.cpp \
     dbinterface.cpp \
     settingsdialog.cpp \
-    exportdialog.cpp
+    exportdialog.cpp \
+    eventswindow.cpp
 
 HEADERS  += \
     newcolumndialog.h \
@@ -29,13 +30,15 @@ HEADERS  += \
     cfginterface.h \
     dbinterface.h \
     settingsdialog.h \
-    exportdialog.h
+    exportdialog.h \
+    eventswindow.h
 
 FORMS    += infomaniac.ui \
     newcolumndialog.ui \
     errordialog.ui \
     settingsdialog.ui \
-    exportdialog.ui
+    exportdialog.ui \
+    eventswindow.ui
 
 Release:DESTDIR = $$TARGET-$$VERSION-$$STAGE-$$TYPE
 

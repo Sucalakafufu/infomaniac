@@ -36,9 +36,9 @@
     </widget>
    </item>
    <item>
-    <widget class="QCheckBox" name="ShowCurrentDBcheckBox">
+    <widget class="QCheckBox" name="ShowOpenDBcheckBox">
      <property name="text">
-      <string>Show Current Databse</string>
+      <string>Show Open Databse</string>
      </property>
     </widget>
    </item>

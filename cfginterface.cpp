@@ -17,7 +17,7 @@ void cfgInterface::reInit()
 
         hideToolBar = false;
         rememberLastDB = true;
-        showCurrentDB = true;
+        ShowOpenDB = true;
         lastDBFileName = "\n";
         cfgUpdate();
     }
@@ -29,7 +29,7 @@ void cfgInterface::reInit()
         //initiate settings
         hideToolBar = fin.readLine().toInt();
         rememberLastDB = fin.readLine().toInt();
-        showCurrentDB = fin.readLine().toInt();
+        ShowOpenDB = fin.readLine().toInt();
         lastDBFileName = fin.readLine();
 
         cfgFile.close();
@@ -46,7 +46,7 @@ void cfgInterface::cfgUpdate()
     //write config
     fout << hideToolBar << endl;
     fout << rememberLastDB << endl;
-    fout << showCurrentDB << endl;
+    fout << ShowOpenDB << endl;
     fout << lastDBFileName;
 
     cfgFile.close();
@@ -78,17 +78,17 @@ bool cfgInterface::getRememberDB()
     return rememberLastDB;
 }
 
-void cfgInterface::setShowCurrentDB(bool show)
+void cfgInterface::setShowOpenDB(bool show)
 {
     reInit();
-    showCurrentDB = show;
+    ShowOpenDB = show;
     cfgUpdate();
 }
 
-bool cfgInterface::getShowCurrentDB()
+bool cfgInterface::getShowOpenDB()
 {
     reInit();
-    return showCurrentDB;
+    return ShowOpenDB;
 }
 
 void cfgInterface::setLastDBFileName(QString openDBFileName)

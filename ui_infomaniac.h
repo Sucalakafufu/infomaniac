@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'infomaniac.ui'
 **
-** Created: Thu Sep 20 20:40:37 2012
+** Created: Sat Sep 22 23:01:50 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -14,11 +14,16 @@
 #include <QtGui/QAction>
 #include <QtGui/QApplication>
 #include <QtGui/QButtonGroup>
+#include <QtGui/QComboBox>
+#include <QtGui/QFrame>
+#include <QtGui/QHBoxLayout>
 #include <QtGui/QHeaderView>
 #include <QtGui/QLabel>
 #include <QtGui/QMainWindow>
 #include <QtGui/QMenu>
 #include <QtGui/QMenuBar>
+#include <QtGui/QPushButton>
+#include <QtGui/QSpacerItem>
 #include <QtGui/QTableWidget>
 #include <QtGui/QToolBar>
 #include <QtGui/QVBoxLayout>
@@ -41,14 +46,23 @@ public:
     QAction *actionSettings;
     QAction *actionSaveToolBarState;
     QAction *actionExport_Database;
+    QAction *actionNew_Event;
+    QAction *actionEdit_Events;
     QWidget *centralWidget;
     QVBoxLayout *verticalLayout;
     QLabel *currentDBLabel;
+    QFrame *EventsFrame;
+    QHBoxLayout *horizontalLayout;
+    QLabel *EventsLabel;
+    QComboBox *EventsComboBox;
+    QPushButton *EventsPushButton;
+    QSpacerItem *horizontalSpacer;
     QTableWidget *mainTable;
     QMenuBar *menuBar;
     QMenu *menuFile;
     QMenu *menuMembers;
     QMenu *menuTools;
+    QMenu *menuEvents;
     QToolBar *toolBar;
 
     void setupUi(QMainWindow *InfoManiac)
@@ -80,6 +94,10 @@ public:
         actionSaveToolBarState->setObjectName(QString::fromUtf8("actionSaveToolBarState"));
         actionExport_Database = new QAction(InfoManiac);
         actionExport_Database->setObjectName(QString::fromUtf8("actionExport_Database"));
+        actionNew_Event = new QAction(InfoManiac);
+        actionNew_Event->setObjectName(QString::fromUtf8("actionNew_Event"));
+        actionEdit_Events = new QAction(InfoManiac);
+        actionEdit_Events->setObjectName(QString::fromUtf8("actionEdit_Events"));
         centralWidget = new QWidget(InfoManiac);
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
         verticalLayout = new QVBoxLayout(centralWidget);
@@ -91,6 +109,37 @@ public:
         currentDBLabel->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
 
         verticalLayout->addWidget(currentDBLabel);
+
+        EventsFrame = new QFrame(centralWidget);
+        EventsFrame->setObjectName(QString::fromUtf8("EventsFrame"));
+        EventsFrame->setFrameShape(QFrame::StyledPanel);
+        EventsFrame->setFrameShadow(QFrame::Raised);
+        horizontalLayout = new QHBoxLayout(EventsFrame);
+        horizontalLayout->setSpacing(6);
+        horizontalLayout->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+        horizontalLayout->setContentsMargins(0, -1, 9, -1);
+        EventsLabel = new QLabel(EventsFrame);
+        EventsLabel->setObjectName(QString::fromUtf8("EventsLabel"));
+
+        horizontalLayout->addWidget(EventsLabel);
+
+        EventsComboBox = new QComboBox(EventsFrame);
+        EventsComboBox->setObjectName(QString::fromUtf8("EventsComboBox"));
+
+        horizontalLayout->addWidget(EventsComboBox);
+
+        EventsPushButton = new QPushButton(EventsFrame);
+        EventsPushButton->setObjectName(QString::fromUtf8("EventsPushButton"));
+
+        horizontalLayout->addWidget(EventsPushButton);
+
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer);
+
+
+        verticalLayout->addWidget(EventsFrame);
 
         mainTable = new QTableWidget(centralWidget);
         if (mainTable->columnCount() < 2)
@@ -119,6 +168,8 @@ public:
         menuMembers->setObjectName(QString::fromUtf8("menuMembers"));
         menuTools = new QMenu(menuBar);
         menuTools->setObjectName(QString::fromUtf8("menuTools"));
+        menuEvents = new QMenu(menuBar);
+        menuEvents->setObjectName(QString::fromUtf8("menuEvents"));
         InfoManiac->setMenuBar(menuBar);
         toolBar = new QToolBar(InfoManiac);
         toolBar->setObjectName(QString::fromUtf8("toolBar"));
@@ -126,6 +177,7 @@ public:
 
         menuBar->addAction(menuFile->menuAction());
         menuBar->addAction(menuMembers->menuAction());
+        menuBar->addAction(menuEvents->menuAction());
         menuBar->addAction(menuTools->menuAction());
         menuFile->addAction(actionNewDatabase);
         menuFile->addAction(actionOpen);
@@ -138,6 +190,8 @@ public:
         menuMembers->addAction(actionNewColumn);
         menuMembers->addAction(actionRemoveColumn);
         menuTools->addAction(actionSettings);
+        menuEvents->addAction(actionNew_Event);
+        menuEvents->addAction(actionEdit_Events);
         toolBar->addAction(actionNewMember);
         toolBar->addAction(actionRemoveMember);
         toolBar->addAction(actionNewColumn);
@@ -174,7 +228,11 @@ public:
         actionSaveToolBarState->setText(QApplication::translate("InfoManiac", "SaveToolBarState", 0, QApplication::UnicodeUTF8));
         actionExport_Database->setText(QApplication::translate("InfoManiac", "Export Database", 0, QApplication::UnicodeUTF8));
         actionExport_Database->setShortcut(QApplication::translate("InfoManiac", "Alt+E", 0, QApplication::UnicodeUTF8));
+        actionNew_Event->setText(QApplication::translate("InfoManiac", "New Event", 0, QApplication::UnicodeUTF8));
+        actionEdit_Events->setText(QApplication::translate("InfoManiac", "Edit Events", 0, QApplication::UnicodeUTF8));
         currentDBLabel->setText(QString());
+        EventsLabel->setText(QApplication::translate("InfoManiac", "Events:", 0, QApplication::UnicodeUTF8));
+        EventsPushButton->setText(QApplication::translate("InfoManiac", "Open Event", 0, QApplication::UnicodeUTF8));
         QTableWidgetItem *___qtablewidgetitem = mainTable->horizontalHeaderItem(0);
         ___qtablewidgetitem->setText(QApplication::translate("InfoManiac", "First Name", 0, QApplication::UnicodeUTF8));
         QTableWidgetItem *___qtablewidgetitem1 = mainTable->horizontalHeaderItem(1);
@@ -182,6 +240,7 @@ public:
         menuFile->setTitle(QApplication::translate("InfoManiac", "File", 0, QApplication::UnicodeUTF8));
         menuMembers->setTitle(QApplication::translate("InfoManiac", "Members", 0, QApplication::UnicodeUTF8));
         menuTools->setTitle(QApplication::translate("InfoManiac", "Tools", 0, QApplication::UnicodeUTF8));
+        menuEvents->setTitle(QApplication::translate("InfoManiac", "Events", 0, QApplication::UnicodeUTF8));
         toolBar->setWindowTitle(QApplication::translate("InfoManiac", "toolBar", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 

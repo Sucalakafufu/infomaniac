@@ -26,6 +26,54 @@
      </widget>
     </item>
     <item>
+     <widget class="QFrame" name="EventsFrame">
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>9</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="EventsLabel">
+         <property name="text">
+          <string>Events:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="EventsComboBox"/>
+       </item>
+       <item>
+        <widget class="QPushButton" name="EventsPushButton">
+         <property name="text">
+          <string>Open Event</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
      <widget class="QTableWidget" name="mainTable">
       <property name="contextMenuPolicy">
        <enum>Qt::DefaultContextMenu</enum>
@@ -94,8 +142,16 @@
     </property>
     <addaction name="actionSettings"/>
    </widget>
+   <widget class="QMenu" name="menuEvents">
+    <property name="title">
+     <string>Events</string>
+    </property>
+    <addaction name="actionNew_Event"/>
+    <addaction name="actionEdit_Events"/>
+   </widget>
    <addaction name="menuFile"/>
    <addaction name="menuMembers"/>
+   <addaction name="menuEvents"/>
    <addaction name="menuTools"/>
   </widget>
   <widget class="QToolBar" name="toolBar">
@@ -198,6 +254,16 @@
    </property>
    <property name="shortcut">
     <string>Alt+E</string>
+   </property>
+  </action>
+  <action name="actionNew_Event">
+   <property name="text">
+    <string>New Event</string>
+   </property>
+  </action>
+  <action name="actionEdit_Events">
+   <property name="text">
+    <string>Edit Events</string>
    </property>
   </action>
  </widget>
