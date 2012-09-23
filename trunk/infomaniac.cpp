@@ -3,7 +3,7 @@
 
 //static vars
 const static QString APPNAME = "InfoManiac Alpha";
-const static QString VERSIONNUM = "1.1";
+const static QString VERSIONNUM = "1.3";
 
 InfoManiac::InfoManiac(QWidget *parent) :
     QMainWindow(parent),
@@ -16,8 +16,8 @@ InfoManiac::InfoManiac(QWidget *parent) :
     ui->toolBar->setHidden(cfg.getToolBarState());
     currentDBFileName = cfg.getLastDBFileName();
 
-    if (cfg.getShowCurrentDB())    
-        ui->currentDBLabel->setText("Current Database: "+cfg.getLastDBFileName());        
+    if (cfg.getShowOpenDB())
+        ui->currentDBLabel->setText("Open Database: "+cfg.getLastDBFileName());
 
     if (cfg.getRememberDB())
         db.openLastDB(ui->mainTable);
@@ -30,8 +30,8 @@ InfoManiac::~InfoManiac()
 
 void InfoManiac::refreshUI()
 {
-    if (cfg.getShowCurrentDB())
-        ui->currentDBLabel->setText("Current Database: "+currentDBFileName);
+    if (cfg.getShowOpenDB())
+        ui->currentDBLabel->setText("Open Database: "+currentDBFileName);
     else
         ui->currentDBLabel->setText("");
 }

@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'settingsdialog.ui'
 **
-** Created: Thu Sep 20 20:40:37 2012
+** Created: Thu Sep 20 20:52:42 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -30,7 +30,7 @@ public:
     QLabel *StartupLabel;
     QCheckBox *OpenLastDBcheckBox;
     QLabel *LookAndFeelLabel;
-    QCheckBox *ShowCurrentDBcheckBox;
+    QCheckBox *ShowOpenDBcheckBox;
     QDialogButtonBox *SettingsDialogButtonBox;
 
     void setupUi(QDialog *SettingsDialog)
@@ -55,10 +55,10 @@ public:
 
         verticalLayout->addWidget(LookAndFeelLabel);
 
-        ShowCurrentDBcheckBox = new QCheckBox(SettingsDialog);
-        ShowCurrentDBcheckBox->setObjectName(QString::fromUtf8("ShowCurrentDBcheckBox"));
+        ShowOpenDBcheckBox = new QCheckBox(SettingsDialog);
+        ShowOpenDBcheckBox->setObjectName(QString::fromUtf8("ShowOpenDBcheckBox"));
 
-        verticalLayout->addWidget(ShowCurrentDBcheckBox);
+        verticalLayout->addWidget(ShowOpenDBcheckBox);
 
         SettingsDialogButtonBox = new QDialogButtonBox(SettingsDialog);
         SettingsDialogButtonBox->setObjectName(QString::fromUtf8("SettingsDialogButtonBox"));
@@ -80,7 +80,7 @@ public:
         StartupLabel->setText(QApplication::translate("SettingsDialog", "Startup", 0, QApplication::UnicodeUTF8));
         OpenLastDBcheckBox->setText(QApplication::translate("SettingsDialog", "Open Last Database", 0, QApplication::UnicodeUTF8));
         LookAndFeelLabel->setText(QApplication::translate("SettingsDialog", "Look and Feel", 0, QApplication::UnicodeUTF8));
-        ShowCurrentDBcheckBox->setText(QApplication::translate("SettingsDialog", "Show Current Databse", 0, QApplication::UnicodeUTF8));
+        ShowOpenDBcheckBox->setText(QApplication::translate("SettingsDialog", "Show Open Databse", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };
