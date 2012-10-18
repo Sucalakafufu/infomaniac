@@ -4,19 +4,19 @@
 #include <QDialog>
 
 namespace Ui {
-class neweventdialog;
+class NewEventDialog;
 }
 
-class neweventdialog : public QDialog
+class NewEventDialog : public QDialog
 {
     Q_OBJECT
     
 public:
-    explicit neweventdialog(QWidget *parent = 0);
-    ~neweventdialog();
+    explicit NewEventDialog(QWidget *parent = 0);
+    ~NewEventDialog();
     
 private:
-    Ui::neweventdialog *ui;
+    Ui::NewEventDialog *ui;
 };
 
 #endif // NEWEVENTDIALOG_H

@@ -48,3 +48,6 @@ FORMS    += infomaniac.ui \
 Release:DESTDIR = $$TARGET-$$VERSION-$$STAGE-$$TYPE
 
 CONFIG += static
+
+RESOURCES += \
+    infomaniac.qrc
