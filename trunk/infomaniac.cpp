@@ -14,13 +14,14 @@ InfoManiac::InfoManiac(QWidget *parent) :
 
     //initialize
     ui->toolBar->setHidden(cfg.getToolBarState());
-    currentDBFileName = cfg.getLastDBFileName();
-
-    if (cfg.getShowOpenDB())
-        ui->currentDBLabel->setText("Open Database: "+cfg.getLastDBFileName());
+    currentDBFileName = cfg.getLastDBFileName();    
 
     if (cfg.getRememberDB())
+    {
         db.openLastDB(ui->mainTable);
+        if (cfg.getShowOpenDB())
+            ui->currentDBLabel->setText("Open Database: "+cfg.getLastDBFileName());
+    }
 }
 
 InfoManiac::~InfoManiac()
@@ -117,13 +118,13 @@ void InfoManiac::on_actionNewDatabase_triggered()
     refreshUI();
 }
 
-void InfoManiac::on_actionSave_As_triggered()
+void InfoManiac::on_actionSaveAs_triggered()
 {
     db.populateDB(ui->mainTable);
     db.saveDBAs(this);
 }
 
-void InfoManiac::on_actionExport_Database_triggered()
+void InfoManiac::on_actionExportDatabase_triggered()
 {
     ExportDialog *exportDialog = new ExportDialog(this, ui->mainTable);
     exportDialog->exec();
@@ -132,4 +133,13 @@ void InfoManiac::on_actionExport_Database_triggered()
 void InfoManiac::on_mainTable_cellChanged(int row, int column)
 {
     ui->mainTable->resizeColumnsToContents();
+}
+
+void InfoManiac::on_actionNewEvent_triggered()
+{
+    NewEventDialog *newEvent = new NewEventDialog(this);
+
+    if (newEvent->exec() == QDialog::Accepted)
+    {
+    }
 }

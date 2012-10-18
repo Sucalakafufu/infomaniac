@@ -7,6 +7,7 @@
 #include "cfginterface.h"
 #include "settingsdialog.h"
 #include "exportdialog.h"
+#include "neweventdialog.h"
 #include <QMainWindow>
 #include <QString>
 
@@ -41,11 +42,13 @@ private slots:
 
     void on_actionNewDatabase_triggered();
 
-    void on_actionSave_As_triggered();
+    void on_actionSaveAs_triggered();
 
-    void on_actionExport_Database_triggered();
+    void on_actionExportDatabase_triggered();
 
     void on_mainTable_cellChanged(int row, int column);
+
+    void on_actionNewEvent_triggered();
 
 private:
     Ui::InfoManiac *ui;
