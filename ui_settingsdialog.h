@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'settingsdialog.ui'
 **
-** Created: Thu Sep 20 20:52:42 2012
+** Created: Mon Oct 15 12:11:56 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -80,7 +80,7 @@ public:
         StartupLabel->setText(QApplication::translate("SettingsDialog", "Startup", 0, QApplication::UnicodeUTF8));
         OpenLastDBcheckBox->setText(QApplication::translate("SettingsDialog", "Open Last Database", 0, QApplication::UnicodeUTF8));
         LookAndFeelLabel->setText(QApplication::translate("SettingsDialog", "Look and Feel", 0, QApplication::UnicodeUTF8));
-        ShowOpenDBcheckBox->setText(QApplication::translate("SettingsDialog", "Show Open Databse", 0, QApplication::UnicodeUTF8));
+        ShowOpenDBcheckBox->setText(QApplication::translate("SettingsDialog", "Show Open Database", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };

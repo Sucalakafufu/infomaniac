@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'infomaniac.ui'
 **
-** Created: Sat Sep 22 23:01:50 2012
+** Created: Mon Sep 24 10:21:03 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -40,14 +40,14 @@ public:
     QAction *actionNewColumn;
     QAction *actionRemoveColumn;
     QAction *actionSave;
-    QAction *actionSave_As;
+    QAction *actionSaveAs;
     QAction *actionOpen;
     QAction *actionNewDatabase;
     QAction *actionSettings;
     QAction *actionSaveToolBarState;
-    QAction *actionExport_Database;
-    QAction *actionNew_Event;
-    QAction *actionEdit_Events;
+    QAction *actionExportDatabase;
+    QAction *actionNewEvent;
+    QAction *actionEditEvents;
     QWidget *centralWidget;
     QVBoxLayout *verticalLayout;
     QLabel *currentDBLabel;
@@ -82,8 +82,8 @@ public:
         actionRemoveColumn->setObjectName(QString::fromUtf8("actionRemoveColumn"));
         actionSave = new QAction(InfoManiac);
         actionSave->setObjectName(QString::fromUtf8("actionSave"));
-        actionSave_As = new QAction(InfoManiac);
-        actionSave_As->setObjectName(QString::fromUtf8("actionSave_As"));
+        actionSaveAs = new QAction(InfoManiac);
+        actionSaveAs->setObjectName(QString::fromUtf8("actionSaveAs"));
         actionOpen = new QAction(InfoManiac);
         actionOpen->setObjectName(QString::fromUtf8("actionOpen"));
         actionNewDatabase = new QAction(InfoManiac);
@@ -92,12 +92,12 @@ public:
         actionSettings->setObjectName(QString::fromUtf8("actionSettings"));
         actionSaveToolBarState = new QAction(InfoManiac);
         actionSaveToolBarState->setObjectName(QString::fromUtf8("actionSaveToolBarState"));
-        actionExport_Database = new QAction(InfoManiac);
-        actionExport_Database->setObjectName(QString::fromUtf8("actionExport_Database"));
-        actionNew_Event = new QAction(InfoManiac);
-        actionNew_Event->setObjectName(QString::fromUtf8("actionNew_Event"));
-        actionEdit_Events = new QAction(InfoManiac);
-        actionEdit_Events->setObjectName(QString::fromUtf8("actionEdit_Events"));
+        actionExportDatabase = new QAction(InfoManiac);
+        actionExportDatabase->setObjectName(QString::fromUtf8("actionExportDatabase"));
+        actionNewEvent = new QAction(InfoManiac);
+        actionNewEvent->setObjectName(QString::fromUtf8("actionNewEvent"));
+        actionEditEvents = new QAction(InfoManiac);
+        actionEditEvents->setObjectName(QString::fromUtf8("actionEditEvents"));
         centralWidget = new QWidget(InfoManiac);
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
         verticalLayout = new QVBoxLayout(centralWidget);
@@ -182,16 +182,16 @@ public:
         menuFile->addAction(actionNewDatabase);
         menuFile->addAction(actionOpen);
         menuFile->addAction(actionSave);
-        menuFile->addAction(actionSave_As);
-        menuFile->addAction(actionExport_Database);
+        menuFile->addAction(actionSaveAs);
+        menuFile->addAction(actionExportDatabase);
         menuFile->addAction(actionQuit);
         menuMembers->addAction(actionNewMember);
         menuMembers->addAction(actionRemoveMember);
         menuMembers->addAction(actionNewColumn);
         menuMembers->addAction(actionRemoveColumn);
         menuTools->addAction(actionSettings);
-        menuEvents->addAction(actionNew_Event);
-        menuEvents->addAction(actionEdit_Events);
+        menuEvents->addAction(actionNewEvent);
+        menuEvents->addAction(actionEditEvents);
         toolBar->addAction(actionNewMember);
         toolBar->addAction(actionRemoveMember);
         toolBar->addAction(actionNewColumn);
@@ -217,8 +217,8 @@ public:
         actionRemoveColumn->setText(QApplication::translate("InfoManiac", "RemoveColumn", 0, QApplication::UnicodeUTF8));
         actionSave->setText(QApplication::translate("InfoManiac", "Save Database", 0, QApplication::UnicodeUTF8));
         actionSave->setShortcut(QApplication::translate("InfoManiac", "Ctrl+S", 0, QApplication::UnicodeUTF8));
-        actionSave_As->setText(QApplication::translate("InfoManiac", "Save Database As", 0, QApplication::UnicodeUTF8));
-        actionSave_As->setShortcut(QApplication::translate("InfoManiac", "Ctrl+Shift+S", 0, QApplication::UnicodeUTF8));
+        actionSaveAs->setText(QApplication::translate("InfoManiac", "Save Database As", 0, QApplication::UnicodeUTF8));
+        actionSaveAs->setShortcut(QApplication::translate("InfoManiac", "Ctrl+Shift+S", 0, QApplication::UnicodeUTF8));
         actionOpen->setText(QApplication::translate("InfoManiac", "Open Database", 0, QApplication::UnicodeUTF8));
         actionOpen->setShortcut(QApplication::translate("InfoManiac", "Ctrl+O", 0, QApplication::UnicodeUTF8));
         actionNewDatabase->setText(QApplication::translate("InfoManiac", "New Database", 0, QApplication::UnicodeUTF8));
@@ -226,10 +226,10 @@ public:
         actionSettings->setText(QApplication::translate("InfoManiac", "Settings", 0, QApplication::UnicodeUTF8));
         actionSettings->setShortcut(QApplication::translate("InfoManiac", "Ctrl+,", 0, QApplication::UnicodeUTF8));
         actionSaveToolBarState->setText(QApplication::translate("InfoManiac", "SaveToolBarState", 0, QApplication::UnicodeUTF8));
-        actionExport_Database->setText(QApplication::translate("InfoManiac", "Export Database", 0, QApplication::UnicodeUTF8));
-        actionExport_Database->setShortcut(QApplication::translate("InfoManiac", "Alt+E", 0, QApplication::UnicodeUTF8));
-        actionNew_Event->setText(QApplication::translate("InfoManiac", "New Event", 0, QApplication::UnicodeUTF8));
-        actionEdit_Events->setText(QApplication::translate("InfoManiac", "Edit Events", 0, QApplication::UnicodeUTF8));
+        actionExportDatabase->setText(QApplication::translate("InfoManiac", "Export Database", 0, QApplication::UnicodeUTF8));
+        actionExportDatabase->setShortcut(QApplication::translate("InfoManiac", "Alt+E", 0, QApplication::UnicodeUTF8));
+        actionNewEvent->setText(QApplication::translate("InfoManiac", "New Event", 0, QApplication::UnicodeUTF8));
+        actionEditEvents->setText(QApplication::translate("InfoManiac", "Edit Events", 0, QApplication::UnicodeUTF8));
         currentDBLabel->setText(QString());
         EventsLabel->setText(QApplication::translate("InfoManiac", "Events:", 0, QApplication::UnicodeUTF8));
         EventsPushButton->setText(QApplication::translate("InfoManiac", "Open Event", 0, QApplication::UnicodeUTF8));

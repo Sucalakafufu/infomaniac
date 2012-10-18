@@ -43,7 +43,7 @@ private:
     QFile dbFile;
 
     QVector<QString> dbColumns;
-    QVector< QVector<QString> > db;        
+    QVector< QVector<QString> > db;
 
     cfgInterface cfg;
 
