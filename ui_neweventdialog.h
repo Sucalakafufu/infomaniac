@@ -1,40 +1,37 @@
 /********************************************************************************
-** Form generated from reading UI file 'eventswindow.ui'
+** Form generated from reading UI file 'neweventdialog.ui'
 **
-** Created: Wed Oct 17 20:00:48 2012
+** Created: Wed Oct 17 20:02:58 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef UI_EVENTSWINDOW_H
-#define UI_EVENTSWINDOW_H
+#ifndef UI_NEWEVENTDIALOG_H
+#define UI_NEWEVENTDIALOG_H
 
 #include <QtCore/QVariant>
 #include <QtGui/QAction>
 #include <QtGui/QApplication>
 #include <QtGui/QButtonGroup>
 #include <QtGui/QDateEdit>
+#include <QtGui/QDialog>
+#include <QtGui/QDialogButtonBox>
 #include <QtGui/QFrame>
 #include <QtGui/QGridLayout>
 #include <QtGui/QHBoxLayout>
 #include <QtGui/QHeaderView>
 #include <QtGui/QLabel>
 #include <QtGui/QLineEdit>
-#include <QtGui/QMainWindow>
-#include <QtGui/QMenu>
-#include <QtGui/QMenuBar>
-#include <QtGui/QStatusBar>
 #include <QtGui/QTimeEdit>
-#include <QtGui/QWidget>
+#include <QtGui/QVBoxLayout>
 
 QT_BEGIN_NAMESPACE
 
-class Ui_EventsWindow
+class Ui_NewEventDialog
 {
 public:
-    QAction *actionClose;
-    QWidget *centralwidget;
+    QVBoxLayout *verticalLayout;
     QFrame *EventInfoFrame;
     QGridLayout *gridLayout;
     QFrame *EventFrame;
@@ -61,22 +58,17 @@ public:
     QHBoxLayout *horizontalLayout_6;
     QLabel *EndTimeLabel;
     QTimeEdit *EndTimeEdit;
-    QMenuBar *menubar;
-    QMenu *menuFile;
-    QStatusBar *statusbar;
+    QDialogButtonBox *buttonBox;
 
-    void setupUi(QMainWindow *EventsWindow)
+    void setupUi(QDialog *NewEventDialog)
     {
-        if (EventsWindow->objectName().isEmpty())
-            EventsWindow->setObjectName(QString::fromUtf8("EventsWindow"));
-        EventsWindow->resize(800, 600);
-        actionClose = new QAction(EventsWindow);
-        actionClose->setObjectName(QString::fromUtf8("actionClose"));
-        centralwidget = new QWidget(EventsWindow);
-        centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
-        EventInfoFrame = new QFrame(centralwidget);
+        if (NewEventDialog->objectName().isEmpty())
+            NewEventDialog->setObjectName(QString::fromUtf8("NewEventDialog"));
+        NewEventDialog->resize(374, 199);
+        verticalLayout = new QVBoxLayout(NewEventDialog);
+        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        EventInfoFrame = new QFrame(NewEventDialog);
         EventInfoFrame->setObjectName(QString::fromUtf8("EventInfoFrame"));
-        EventInfoFrame->setGeometry(QRect(10, 10, 420, 152));
         EventInfoFrame->setFrameShape(QFrame::StyledPanel);
         EventInfoFrame->setFrameShadow(QFrame::Raised);
         gridLayout = new QGridLayout(EventInfoFrame);
@@ -195,46 +187,41 @@ public:
 
         gridLayout->addWidget(EndTimeFrame, 2, 1, 1, 1);
 
-        EventsWindow->setCentralWidget(centralwidget);
-        menubar = new QMenuBar(EventsWindow);
-        menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 800, 21));
-        menuFile = new QMenu(menubar);
-        menuFile->setObjectName(QString::fromUtf8("menuFile"));
-        EventsWindow->setMenuBar(menubar);
-        statusbar = new QStatusBar(EventsWindow);
-        statusbar->setObjectName(QString::fromUtf8("statusbar"));
-        EventsWindow->setStatusBar(statusbar);
 
-        menubar->addAction(menuFile->menuAction());
-        menuFile->addAction(actionClose);
+        verticalLayout->addWidget(EventInfoFrame);
 
-        retranslateUi(EventsWindow);
-        QObject::connect(actionClose, SIGNAL(triggered()), EventsWindow, SLOT(close()));
+        buttonBox = new QDialogButtonBox(NewEventDialog);
+        buttonBox->setObjectName(QString::fromUtf8("buttonBox"));
+        buttonBox->setOrientation(Qt::Horizontal);
+        buttonBox->setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::Ok);
 
-        QMetaObject::connectSlotsByName(EventsWindow);
+        verticalLayout->addWidget(buttonBox);
+
+
+        retranslateUi(NewEventDialog);
+        QObject::connect(buttonBox, SIGNAL(accepted()), NewEventDialog, SLOT(accept()));
+        QObject::connect(buttonBox, SIGNAL(rejected()), NewEventDialog, SLOT(reject()));
+
+        QMetaObject::connectSlotsByName(NewEventDialog);
     } // setupUi
 
-    void retranslateUi(QMainWindow *EventsWindow)
+    void retranslateUi(QDialog *NewEventDialog)
     {
-        EventsWindow->setWindowTitle(QApplication::translate("EventsWindow", "MainWindow", 0, QApplication::UnicodeUTF8));
-        actionClose->setText(QApplication::translate("EventsWindow", "Close", 0, QApplication::UnicodeUTF8));
-        actionClose->setShortcut(QApplication::translate("EventsWindow", "Ctrl+Q", 0, QApplication::UnicodeUTF8));
-        EventLabel->setText(QApplication::translate("EventsWindow", "Event:", 0, QApplication::UnicodeUTF8));
-        LocationLabel->setText(QApplication::translate("EventsWindow", "Location:", 0, QApplication::UnicodeUTF8));
-        StartDateLabel->setText(QApplication::translate("EventsWindow", "Start Date:", 0, QApplication::UnicodeUTF8));
-        EndDateLabel->setText(QApplication::translate("EventsWindow", "End Date:", 0, QApplication::UnicodeUTF8));
-        StartTimeLabel->setText(QApplication::translate("EventsWindow", "Start Time:", 0, QApplication::UnicodeUTF8));
-        EndTimeLabel->setText(QApplication::translate("EventsWindow", "End Time:", 0, QApplication::UnicodeUTF8));
-        menuFile->setTitle(QApplication::translate("EventsWindow", "File", 0, QApplication::UnicodeUTF8));
+        NewEventDialog->setWindowTitle(QApplication::translate("NewEventDialog", "Dialog", 0, QApplication::UnicodeUTF8));
+        EventLabel->setText(QApplication::translate("NewEventDialog", "Event:", 0, QApplication::UnicodeUTF8));
+        LocationLabel->setText(QApplication::translate("NewEventDialog", "Location:", 0, QApplication::UnicodeUTF8));
+        StartDateLabel->setText(QApplication::translate("NewEventDialog", "Start Date:", 0, QApplication::UnicodeUTF8));
+        EndDateLabel->setText(QApplication::translate("NewEventDialog", "End Date:", 0, QApplication::UnicodeUTF8));
+        StartTimeLabel->setText(QApplication::translate("NewEventDialog", "Start Time:", 0, QApplication::UnicodeUTF8));
+        EndTimeLabel->setText(QApplication::translate("NewEventDialog", "End Time:", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };
 
 namespace Ui {
-    class EventsWindow: public Ui_EventsWindow {};
+    class NewEventDialog: public Ui_NewEventDialog {};
 } // namespace Ui
 
 QT_END_NAMESPACE
 
-#endif // UI_EVENTSWINDOW_H
+#endif // UI_NEWEVENTDIALOG_H

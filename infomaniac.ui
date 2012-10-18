@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>InfoManiac</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="infomaniac.qrc">
+    <normaloff>:/icons/InfoManiac.ico</normaloff>:/icons/InfoManiac.ico</iconset>
+  </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
@@ -268,7 +272,9 @@
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="infomaniac.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>actionQuit</sender>

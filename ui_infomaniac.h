@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'infomaniac.ui'
 **
-** Created: Mon Sep 24 10:21:03 2012
+** Created: Wed Oct 17 20:04:55 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -70,6 +70,9 @@ public:
         if (InfoManiac->objectName().isEmpty())
             InfoManiac->setObjectName(QString::fromUtf8("InfoManiac"));
         InfoManiac->resize(761, 509);
+        QIcon icon;
+        icon.addFile(QString::fromUtf8(":/icons/InfoManiac.ico"), QSize(), QIcon::Normal, QIcon::Off);
+        InfoManiac->setWindowIcon(icon);
         actionNewMember = new QAction(InfoManiac);
         actionNewMember->setObjectName(QString::fromUtf8("actionNewMember"));
         actionQuit = new QAction(InfoManiac);
